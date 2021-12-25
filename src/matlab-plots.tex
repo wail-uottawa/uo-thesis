@@ -1,0 +1,28 @@
+% An appendix
+%======================================================================
+\chapter[PDF Plots From Matlab]{Matlab Code for Making a PDF Plot}
+\label{AppendixA}
+% Tip 4: Example of how to get a shorter chapter title for the Table of Contents 
+%======================================================================
+\section{Using the GUI}
+Properties of Matab plots can be adjusted from the plot window via a graphical interface. Under the Desktop menu in the Figure window, select the Property Editor. You may also want to check the Plot Browser and Figure Palette for more tools. To adjust properties of the axes, look under the Edit menu and select Axes Properties.
+
+To set the figure size and to save as PDF or other file formats, click the Export Setup button in the figure Property Editor.
+
+\section{From the Command Line} 
+All figure properties can also be manipulated from the command line. Here's an example: 
+\begin{verbatim}
+x=[0:0.1:pi];
+hold on % Plot multiple traces on one figure
+plot(x,sin(x))
+plot(x,cos(x),'--r')
+plot(x,tan(x),'.-g')
+title('Some Trig Functions Over 0 to \pi') % Note LaTeX markup!
+legend('{\it sin}(x)','{\it cos}(x)','{\it tan}(x)')
+hold off
+set(gca,'Ylim',[-3 3]) % Adjust Y limits of "current axes"
+set(gcf,'Units','inches') % Set figure size units of "current figure"
+set(gcf,'Position',[0,0,6,4]) % Set figure width (6 in.) and height (4 in.)
+cd n:\thesis\plots % Select where to save
+print -dpdf plot.pdf % Save as PDF
+\end{verbatim}
